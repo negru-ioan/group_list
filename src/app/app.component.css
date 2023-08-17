@@ -8,7 +8,6 @@
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     padding: 0;
-    background: #ff0000;
   }
 
 nav {
@@ -21,7 +20,6 @@ nav {
   align-items: center;
   font-weight: 600;
   border-bottom: 1px solid rgba(197, 197, 197, 0.473);
-  margin-bottom: 35px;
   font-size: large;
 }
 nav > h1 {
@@ -34,12 +32,42 @@ nav #youtube-logo:hover {
 }
 
 .search{
-  width: 200px;
+  display: flex;
+  margin: 15px 0;
+  gap: 6px;
+  width: 250px;
   padding: 5px 10px;
+  background-color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.37);
+  box-shadow: 0 2px 5px rgba(128, 128, 128, 0.37)
 }
 
+.search > img, .custom-field > img {
+  width: 15px;
+  height: 15px;
+  filter: brightness(.1);
+}
+
+
 input[type=search]{
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: white;
+  padding: var(--field-padding);
+  border-radius: 3px;
+  width: 250px;
+  outline: none;
+  font-size: 14px;
   width: 100%;
+  background-color: inherit;
+  font-size: medium;
+}
+
+input[type=search]:active{
+  border: none
 }
 
 .content {
@@ -47,7 +75,6 @@ input[type=search]{
   width: 100%;
   height: 90vh;
   flex-direction: column;
-  border: .1px solid red;
 }
 
 
@@ -94,63 +121,6 @@ a:hover {
   color: #125699;
 }
 
-.circle-link {
-  height: 40px;
-  width: 40px;
-  border-radius: 40px;
-  margin: 8px;
-  background-color: white;
-  border: 1px solid #eeeeee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: 1s ease-out;
-}
-
-.circle-link:hover {
-  transform: translateY(-0.25rem);
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-}
-
-footer {
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-  line-height: 20px;
-}
-
-footer a {
-  display: flex;
-  align-items: center;
-}
-
-.github-star-badge {
-  color: #24292e;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  padding: 3px 10px;
-  border: 1px solid rgba(27,31,35,.2);
-  border-radius: 3px;
-  background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
-  margin-left: 4px;
-  font-weight: 600;
-}
-
-.github-star-badge:hover {
-  background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-  border-color: rgba(27,31,35,.35);
-  background-position: -.5em;
-}
-
-.github-star-badge .material-icons {
-  height: 16px;
-  width: 16px;
-  margin-right: 4px;
-}
-
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
   .card-container > *:not(.circle-link) ,
@@ -164,5 +134,3 @@ footer a {
     margin-left: 72px;
   }
 }
-
-

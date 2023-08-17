@@ -1,0 +1,47 @@
+.card {
+  border: 2px solid orange;
+  padding: 10px 10px 10px 20px;
+  border-radius: 10px;
+  background-color: var(--color-bg);
+}
+
+.left-side {
+  /* position: relative; */
+}
+
+.upp-row,
+.left-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.left-side > img {
+  width: 20px;
+  height: 20px;
+}
+
+menu {
+  line-height: 0px;
+  position: relative;
+  top: -14px;
+  font-size: 45px;
+  right: 0;
+  color: var(--color-primary);
+}
+
+.popup{
+    width: 200px;
+    top: 10px;
+    left: 25px;
+    /* visibility: hidden; */
+}
+
+.popup > p{
+    border-bottom: .1px solid var(--color-gray-400);
+    padding-bottom: 5px;
+    font-size: medium;
+    font-weight: 600;
+    margin-bottom: 7px;
+}

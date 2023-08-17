@@ -1,0 +1,36 @@
+<div class="card shadow-lg">
+  <div class="upp-row">
+    <div class="left-side">
+      <img
+        src="https://www.pngall.com/wp-content/uploads/8/Yellow-Warning.png"
+        alt=""
+      />
+      <h3>Grupa di firma per dispozitioni</h3>
+      <div class="relative">
+        <menu (mouseenter)="showPopup()" (mouseleave)="hidePopup()">...</menu>
+        <div
+          [ngClass]="{'hidden': !popupVisible}"
+          class="popup w-40 flex flex-col gap-2 absolute bg-white p-3 rounded shadow-lg"
+        >
+          <p class="">Altro</p>
+          <div class="flex gap-4 py-2">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
+              alt="pen"
+              class="icon"
+            />
+            <p>Modifica</p>
+          </div>
+          <div class="flex gap-4">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
+              alt="pen"
+              class="icon"
+            />
+            <p>Elimina</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
