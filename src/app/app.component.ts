@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'group_list';
+  location = "Gruppi di firma"
 }
