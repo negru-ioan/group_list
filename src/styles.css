@@ -56,6 +56,10 @@
   /* Selection */
   --color-selection-bg: var(--color-primary);
   --color-selection-text: #ffffff;
+  --color-white-smoke: #f5f5f5;
+
+  /* Define color variable */
+  --color-white-smoke: #f5f5f5;
 }
 
 * {
@@ -73,4 +77,17 @@ body {
 .icon {
   width: 20px;
   height: 20px;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+p {
+  color: var(--color-gray-600);
 }

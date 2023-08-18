@@ -1,7 +1,11 @@
-<div class="card shadow-lg">
+<div
+  class="card shadow-lg"
+  [style.border]="group.warning ? '2px solid var(--color-accent-light)' : null"
+>
   <div class="upp-row">
-    <div class="left-side">
+    <div class="left-side" style="display: flex; gap: 10px">
       <img
+        *ngIf="group.warning"
         src="https://www.pngall.com/wp-content/uploads/8/Yellow-Warning.png"
         alt=""
       />
@@ -9,11 +13,13 @@
       <div class="relative">
         <menu (mouseenter)="showPopup()" (mouseleave)="hidePopup()">...</menu>
         <div
-          [ngClass]="{'hidden': !popupVisible}"
+          [ngClass]="{ hidden: !popupVisible }"
+          (mouseenter)="showPopup()"
+          (mouseleave)="hidePopup()"
           class="popup w-40 flex flex-col gap-2 absolute bg-white p-3 rounded shadow-lg"
         >
           <p class="">Altro</p>
-          <div class="flex gap-4 py-2">
+          <div class="flex gap-4 py-2 text-secondary">
             <img
               src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
               alt="pen"
@@ -32,5 +38,27 @@
         </div>
       </div>
     </div>
+    <div class="right-side flex gap-1">
+      <div class="user-initials" *ngFor="let user of users.slice(0, 3)">
+        {{user.userInitials}}
+    </div>
+      <!-- <app-user-initials *ngFor="let user of users.slice(0, 3)" [text]="user.userInitials">
+      </app-user-initials> -->
+      <div class="user-initials" *ngIf="users.length > 3">
+        +{{ users.length - 3}}
+      </div>
+    </div>
+  </div>
+  <p>{{ group.warning }}</p>
+
+  <div class="servives-container flex gap-8 my-4">
+    <app-services
+      *ngFor="let service of services"
+      [title]="service.title"
+      [functionCode]="service.functionCode"
+      [minValue]="service.minValue"
+      [maxValue]="service.maxValue"
+    >
+    </app-services>
   </div>
 </div>

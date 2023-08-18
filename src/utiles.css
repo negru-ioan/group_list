@@ -1,3 +1,10 @@
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 /* Flexbox Utilities */
 .flex {
     display: flex;
@@ -168,7 +175,7 @@
   
   /* Text Color */
   .text-primary {
-    color: var(--color-primary);
+    color: var(--color-gray-900);
   }
   .text-secondary {
     color: var(--color-secondary);
@@ -233,9 +240,6 @@
 }
 .grid-rows-4 {
   grid-template-rows: repeat(4, minmax(0, 1fr));
-}
-.gap-4 {
-  gap: 1rem;
 }
 
 

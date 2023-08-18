@@ -1,8 +1,8 @@
 .card {
-  border: 2px solid orange;
   padding: 10px 10px 10px 20px;
   border-radius: 10px;
   background-color: var(--color-bg);
+  margin-bottom: 20px;
 }
 
 .left-side {
@@ -31,17 +31,37 @@ menu {
   color: var(--color-primary);
 }
 
-.popup{
-    width: 200px;
-    top: 10px;
-    left: 25px;
-    /* visibility: hidden; */
+.popup {
+  width: 200px;
+  top: 10px;
+  left: 25px;
+  color: var(--color-gray-700);
 }
 
-.popup > p{
-    border-bottom: .1px solid var(--color-gray-400);
-    padding-bottom: 5px;
-    font-size: medium;
-    font-weight: 600;
-    margin-bottom: 7px;
+.popup > p {
+  border-bottom: 0.1px solid var(--color-gray-300);
+  padding-bottom: 5px;
+  font-size: medium;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: var(--color-gary-900);
+}
+
+.card > p {
+  padding-left: 31px;
+  color: var(--color-gray-600);
+}
+
+.servives-container {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.user-initials {
+  background-color: var(--color-white-smoke);
+  color: var(--color-gray-600);
+  padding: 4px 7px 6px;
+  border-radius: 50%;
+  font-size: small;
 }

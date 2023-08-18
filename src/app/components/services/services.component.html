@@ -1,0 +1,12 @@
+<div class="services center gap-3">
+  <div class="credit-card">
+    <img [src]="imageUrl" alt="card image" class="icon" />
+  </div>
+  <div class="services__details">
+    <h3>{{ title }}</h3>
+    <p *ngIf="minValue && maxValue">
+      {{ minValue !== "null" ? minValue : 0 }} € -
+      {{ maxValue !== "null" ? maxValue : 0 }} €
+    </p>
+  </div>
+</div>
