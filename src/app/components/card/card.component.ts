@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { GroupService } from 'src/app/group.service';
 import { Group } from 'types';
 
@@ -14,6 +15,7 @@ export class CardComponent implements OnChanges {
   popupVisible = false;
   users: any[] = [];
   services: any[] = [];
+  currentLocation = ""
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['group'] && changes['group'].currentValue) {
@@ -33,8 +35,15 @@ export class CardComponent implements OnChanges {
           : this.group.functions;
     }
   }
+  constructor(private router: Router, private groupService: GroupService) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentLocation = event.url;
+      }
+    });
+  }
 
-  constructor(private groupService: GroupService) {}
+  // constructor(private groupService: GroupService) {}
 
   // deleteGroup(id: number){
   //   this.groupService.deleteGroup(id)

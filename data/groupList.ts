@@ -13,8 +13,20 @@ export const groupList = [
         minValue: '1',
         maxValue: '500',
       },
+      {
+        title: 'F24',
+        functionCode: 'F24-PAYMENT',
+        minValue: '2',
+        maxValue: '150',
+      },
+      {
+        title: 'Bonifico SEPA',
+        functionCode: 'SEPA-TRANSFER',
+        minValue: '2',
+        maxValue: '150',
+      },
     ],
-    groupName: 'Group 69',
+    groupName: 'Alcolisti anonimi',
     id: 69,
     minValue: '1',
     maxValue: '500',
@@ -24,10 +36,24 @@ export const groupList = [
         userInitials: 'EB',
         fullName: 'Elisa Blu',
       },
+      {
+        userId: '09452W4295001',
+        userInitials: 'EM',
+        fullName: 'Eduardo Muie',
+      },
+      {
+        userId: '09452W4208001',
+        userInitials: 'DA',
+        fullName: 'Donatelo Albo',
+      },
+      {
+        userId: '23152W4295001',
+        userInitials: 'MG',
+        fullName: 'Michelangelo Gera',
+      },
     ],
     warning: '',
   },
-
 
   {
     functions: [

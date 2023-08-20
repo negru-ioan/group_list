@@ -9,9 +9,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FirstPageComponent } from './components/first-page/first-page.component';
 import { SecondPageComponent } from './components/second-page/second-page.component';
+import { NewComponent } from './components/new/new.component';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, ServicesComponent, FirstPageComponent, SecondPageComponent],
+  declarations: [
+    AppComponent,
+    CardComponent,
+    ServicesComponent,
+    FirstPageComponent,
+    SecondPageComponent,
+    NewComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

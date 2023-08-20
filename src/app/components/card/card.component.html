@@ -11,12 +11,17 @@
       />
       <h3>{{ group.groupName }}</h3>
       <div class="relative">
-        <menu (mouseenter)="showPopup()" (mouseleave)="hidePopup()">...</menu>
+        <menu
+          (mouseenter)="showPopup()"
+          (mouseleave)="hidePopup()"
+          *ngIf="!currentLocation"
+          >...</menu
+        >
         <div
           [ngClass]="{ hidden: !popupVisible }"
           (mouseenter)="showPopup()"
           (mouseleave)="hidePopup()"
-          class="popup w-40 flex flex-col gap-2 absolute bg-white p-3 rounded shadow-lg"
+          class="popup shadow-lg"
         >
           <p class="">Altro</p>
           <div class="row" routerLink="modifica" (click)="setSelected(group)">
@@ -42,8 +47,6 @@
       <div class="user-initials" *ngFor="let user of users.slice(0, 3)">
         {{ user.userInitials }}
       </div>
-      <!-- <app-user-initials *ngFor="let user of users.slice(0, 3)" [text]="user.userInitials">
-      </app-user-initials> -->
       <div class="user-initials" *ngIf="users.length > 3">
         +{{ users.length - 3 }}
       </div>

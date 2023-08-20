@@ -5,10 +5,6 @@
   margin-bottom: 20px;
 }
 
-.left-side {
-  /* position: relative; */
-}
-
 .upp-row,
 .left-side {
   display: flex;
@@ -32,10 +28,19 @@ menu {
 }
 
 .popup {
+  position: absolute;
   width: 200px;
-  top: 10px;
-  left: 25px;
+  top: 0;
+  left: 20px;
   color: var(--color-gray-700);
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: absolute;
+  background-color: white;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
 }
 
 .popup > p {
@@ -75,7 +80,7 @@ menu {
 .row > img {
   width: 18px;
   height: 18px;
-  filter: opacity(.7);
+  filter: opacity(0.7);
 }
 
 .row > a {

@@ -1,23 +1,19 @@
 <div id="root">
   <nav class="toolbar">
-    <h1>{{ location }}</h1>
+    <h1>{{ paths[currentLocation]?.header }}</h1>
   </nav>
 
   <div class="content" role="main">
-    
     <router-outlet></router-outlet>
 
     <footer>
-      <button
-        mat-raised-button
-        class="center"
-        style="
-          background-color: var(--color-primary);
-          text-align: center;
-          vertical-align: middle;
-        "
-      >
-        <a routerLink="modifica" style="color: white">Nuovo gruppo</a>
+      <button *ngIf="currentLocation !== '/'" mat-raised-button>
+        <a routerLink="/" style="color: var(--color-primary)">Annulla</a>
+      </button>
+      <button mat-raised-button style="background-color: var(--color-primary)">
+        <a routerLink="nuovo" style="color: white">{{
+          paths[currentLocation]?.footer
+        }}</a>
       </button>
     </footer>
   </div>

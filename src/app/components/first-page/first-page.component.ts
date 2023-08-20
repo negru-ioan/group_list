@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GroupService } from 'src/app/group.service';
 import { Group } from 'types';
 
