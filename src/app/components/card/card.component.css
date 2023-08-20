@@ -65,3 +65,20 @@ menu {
   border-radius: 50%;
   font-size: small;
 }
+
+.row {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.row > img {
+  width: 18px;
+  height: 18px;
+  filter: opacity(.7);
+}
+
+.row > a {
+  text-decoration: none;
+  color: var(--color-gray-600);
+}

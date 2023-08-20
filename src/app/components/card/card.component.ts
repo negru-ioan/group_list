@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { GroupService } from 'src/app/group.service';
 import { Group } from 'types';
 
 @Component({
@@ -8,6 +9,7 @@ import { Group } from 'types';
 })
 export class CardComponent implements OnChanges {
   @Input() group!: Group;
+  @Input() deleteGroup!: (id: number) => void;
   length = 0;
   popupVisible = false;
   users: any[] = [];
@@ -16,18 +18,32 @@ export class CardComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['group'] && changes['group'].currentValue) {
       this.length = this.group.functions.length;
-      this.users = this.group.users
+      this.users = this.group.users;
       this.services =
         this.length > 4
-          ? this.group.functions.sort((a, b) => parseInt(a.maxValue) - parseInt(b.maxValue)).slice(0, 4).concat({
-              title: `+${this.length - 4} Servizi`,
-              functionCode: '',
-              minValue: '',
-              maxValue: '',
-            })
+          ? this.group.functions
+              .sort((a, b) => parseInt(a.maxValue) - parseInt(b.maxValue))
+              .slice(0, 4)
+              .concat({
+                title: `+${this.length - 4} Servizi`,
+                functionCode: '',
+                minValue: '',
+                maxValue: '',
+              })
           : this.group.functions;
     }
   }
+
+  constructor(private groupService: GroupService) {}
+
+  // deleteGroup(id: number){
+  //   this.groupService.deleteGroup(id)
+  // }
+
+  setSelected(group: Group){
+    this.groupService.setSelected(group);
+    console.log(this.groupService.getSelected());
+  };
 
   showPopup() {
     this.popupVisible = true;
@@ -37,33 +53,3 @@ export class CardComponent implements OnChanges {
     this.popupVisible = false;
   }
 }
-
-
-// export class CardComponent {
-//   @Input() group!: Group
-//   popupVisible = false;
-//   lenght = this.group.functions.length
-//   users = this.group.users.slice(0, 4);
-//   services =
-//     this.lenght > 4
-//       ? this.group.functions
-//           .slice(0, 4)
-//           .concat({
-//             title: `+${this.lenght - 4} Servizi`,
-//             functionCode: '',
-//             minValue: '',
-//             maxValue: '',
-//           })
-//       : this.group.functions;
-
-//   showPopup() {
-//     this.popupVisible = true;
-//   }
-
-//   hidePopup() {
-//     this.popupVisible = false;
-//   }
-//    f(){
-//     console.log( this.group)
-//   }
-// }

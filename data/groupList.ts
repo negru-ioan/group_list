@@ -14,6 +14,36 @@ export const groupList = [
         maxValue: '500',
       },
     ],
+    groupName: 'Group 69',
+    id: 69,
+    minValue: '1',
+    maxValue: '500',
+    users: [
+      {
+        userId: '09452W4295001',
+        userInitials: 'EB',
+        fullName: 'Elisa Blu',
+      },
+    ],
+    warning: '',
+  },
+
+
+  {
+    functions: [
+      {
+        title: 'MAV',
+        functionCode: 'MAV-SLIP',
+        minValue: '1',
+        maxValue: '500',
+      },
+      {
+        title: 'RAV',
+        functionCode: 'RAV-SLIP',
+        minValue: '1',
+        maxValue: '500',
+      },
+    ],
     groupName: 'Group 1',
     id: 22,
     minValue: '1',

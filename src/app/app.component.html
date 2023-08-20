@@ -4,16 +4,20 @@
   </nav>
 
   <div class="content" role="main">
-   
-    <app-first-page [groups]="groups"></app-first-page>
+    
+    <router-outlet></router-outlet>
 
     <footer>
       <button
         mat-raised-button
         class="center"
-        style="background-color: var(--color-primary); text-align: center; vertical-align: middle;"
+        style="
+          background-color: var(--color-primary);
+          text-align: center;
+          vertical-align: middle;
+        "
       >
-      <a href="" style="color: white;">Nuovo gruppo +</a>
+        <a routerLink="modifica" style="color: white">Nuovo gruppo</a>
       </button>
     </footer>
   </div>

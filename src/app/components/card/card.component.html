@@ -9,7 +9,7 @@
         src="https://www.pngall.com/wp-content/uploads/8/Yellow-Warning.png"
         alt=""
       />
-      <h3>Grupa di firma per dispozitioni</h3>
+      <h3>{{ group.groupName }}</h3>
       <div class="relative">
         <menu (mouseenter)="showPopup()" (mouseleave)="hidePopup()">...</menu>
         <div
@@ -19,7 +19,7 @@
           class="popup w-40 flex flex-col gap-2 absolute bg-white p-3 rounded shadow-lg"
         >
           <p class="">Altro</p>
-          <div class="flex gap-4 py-2 text-secondary">
+          <div class="row" routerLink="modifica" (click)="setSelected(group)">
             <img
               src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
               alt="pen"
@@ -27,7 +27,7 @@
             />
             <p>Modifica</p>
           </div>
-          <div class="flex gap-4">
+          <div class="row" (click)="deleteGroup(group.id)">
             <img
               src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
               alt="pen"
@@ -40,12 +40,12 @@
     </div>
     <div class="right-side flex gap-1">
       <div class="user-initials" *ngFor="let user of users.slice(0, 3)">
-        {{user.userInitials}}
-    </div>
+        {{ user.userInitials }}
+      </div>
       <!-- <app-user-initials *ngFor="let user of users.slice(0, 3)" [text]="user.userInitials">
       </app-user-initials> -->
       <div class="user-initials" *ngIf="users.length > 3">
-        +{{ users.length - 3}}
+        +{{ users.length - 3 }}
       </div>
     </div>
   </div>

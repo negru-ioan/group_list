@@ -8,9 +8,10 @@ import { ServicesComponent } from './components/services/services.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FirstPageComponent } from './components/first-page/first-page.component';
+import { SecondPageComponent } from './components/second-page/second-page.component';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, ServicesComponent, FirstPageComponent],
+  declarations: [AppComponent, CardComponent, ServicesComponent, FirstPageComponent, SecondPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
