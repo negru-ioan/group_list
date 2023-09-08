@@ -10,6 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { FirstPageComponent } from './components/first-page/first-page.component';
 import { SecondPageComponent } from './components/second-page/second-page.component';
 import { NewComponent } from './components/new/new.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatInputModule } from '@angular/material/input';
+import { ModiyCardComponent } from './components/modiy-card/modiy-card.component';
+import { InitialsComponent } from './components/initials/initials.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +23,16 @@ import { NewComponent } from './components/new/new.component';
     FirstPageComponent,
     SecondPageComponent,
     NewComponent,
+    ModiyCardComponent,
+    InitialsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatSlideToggleModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

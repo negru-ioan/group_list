@@ -1,3 +1,91 @@
 <div id="card_container">
-    <app-card [group]="selected"></app-card>
+  <app-modiy-card [group]="selected"></app-modiy-card>
+  <div id="mid">
+    <div class="left">
+      <h1>Abilità servizi per gruppo di firma</h1>
+      <p>Seleziona i servizi e imposta la reletiva soglia</p>
+      <div class="content">
+        <div class="col">
+          <p>Servizo</p>
+          <div class="flex gap-1" *ngFor="let function of functions">
+            <mat-slide-toggle
+              color="primary"
+              [disabled]="inModifyPage"
+              [checked]="!!function.gorupFunct"
+            ></mat-slide-toggle>
+            <p class="title" style="text-overflow: ellipsis">
+              {{ function.function_name }}
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <p>Soglia minima</p>
+          <div
+            class="data flex gap-1 justify-between"
+            *ngFor="let function of functions"
+          >
+            <p
+              class="title"
+              [style]="{
+                visibility: function.gorupFunct?.minValue ? 'visible' : 'hidden'
+              }"
+            >
+              {{ (function.gorupFunct?.minValue | number : "1.2-2") || "N/A" }}
+            </p>
+            <p class="eur" *ngIf="function.gorupFunct">EUR</p>
+          </div>
+        </div>
+        <div class="col">
+          <p>Soglia massima</p>
+          <div
+            class="data flex gap-1 justify-between"
+            *ngFor="let function of functions"
+          >
+            <p
+              class="title"
+              [style]="{
+                visibility: function.gorupFunct?.maxValue ? 'visible' : 'hidden'
+              }"
+            >
+              {{ (function.gorupFunct?.maxValue | number : "1.2-2") || "N/A" }}
+            </p>
+            <p class="eur" *ngIf="function.gorupFunct">EUR</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <h1>Seleziona utenti da aggiungere al gruppo</h1>
+      <p>Sono disponibili solo gli utenti dispositivi</p>
+      <!-- Selectați utilizatorii de adăugat la grup. Numai utilizatorii de dispozitive sunt disponibili -->
+      <div class="content">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Filtra" value="" />
+          </mat-form-field>
+        </form>
+        <div class="users flex flex-col gap-2">
+          <div class="row flex gap-4 items-center" *ngFor="let user of users">
+            <input
+              type="checkbox"
+              name=""
+              [checked]="user?.checked"
+              [disabled]="inModifyPage"
+              id=""
+            />
+            <app-initials
+              [type]="'v2'"
+              [initials]="user.fullName"
+            ></app-initials>
+            <!-- <div class="user-initials">
+              {{ user.userInitials }}
+            </div> -->
+            <div class="name">
+              {{ user.fullName }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

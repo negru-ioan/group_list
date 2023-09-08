@@ -1,3 +1,5 @@
+import { user } from '../types';
+
 export const groupList = [
   {
     functions: [
@@ -272,7 +274,7 @@ export const functions = [
     function_name: 'XML SEPA',
   },
 ];
-export const users = [
+export const users: user[] = [
   {
     userId: '09452W4295001',
     fullName: 'Elisa Blu',

@@ -12,15 +12,15 @@ export class FirstPageComponent implements OnInit {
 
   constructor(private groupService: GroupService) {}
 
-  setSelected = (group: Group) => this.groupService.setSelected(group)
+  setSelected = (group: Group) => this.groupService.setSelected(group);
 
   ngOnInit(): void {
-    this.groups = this.groupService.getGroups();
+    this.groups = this.groupService.getGroups;
   }
 
   deleteGroup(groupId: number): void {
     this.groupService.deleteGroup(groupId);
     // Update the local groups array to reflect the change
-    this.groups = this.groupService.getGroups();
+    this.groups = this.groupService.getGroups;
   }
 }

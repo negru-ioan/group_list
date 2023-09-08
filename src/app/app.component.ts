@@ -27,11 +27,11 @@ export class AppComponent {
     },
     '/modifica': {
       header: 'Modificare il gruppo',
-      footer: "Salva"
+      footer: 'Salva',
     },
     '/nuovo': {
       header: 'Creare un nuovo gruppo',
-      footer: "Salva"
+      footer: 'Salva',
     },
   };
 
@@ -42,6 +42,6 @@ export class AppComponent {
       }
     });
 
-    this.groups = this.groupService.getGroups()
+    this.groups = this.groupService.getGroups;
   }
 }

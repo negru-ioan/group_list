@@ -1,0 +1,70 @@
+<div
+  class="card shadow-lg"
+  [style.border]="group.warning ? '2px solid var(--color-accent-light)' : null"
+>
+  <div class="upp-row">
+    <div class="left-side" style="display: flex; gap: 10px">
+      <img
+        *ngIf="group.warning"
+        src="https://www.pngall.com/wp-content/uploads/8/Yellow-Warning.png"
+        alt=""
+      />
+      <h2>{{ group.groupName }}</h2>
+    </div>
+  </div>
+
+  <div
+    class="flex w-full flex-end justify-between"
+    style="align-items: flex-end; padding: 20px 0 0"
+  >
+    <form class="bottom flex gap-4">
+      <div class="col">
+        <p>Nuome gruppo</p>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Nuome"
+            [value]="'Gruppo'"
+            [disabled]="false"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <p>Soglia minima servizi</p>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="EUR"
+            [value]="group.minValue | number : '1.2-2'"
+            [disabled]="false"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <p>Soglia massima servizi</p>
+
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="EUR"
+            [value]="group.maxValue | number : '1.2-2'"
+            [disabled]="false"
+          />
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="users">
+      <app-initials
+        [type]="'v2'"
+        [initials]="user.userInitials"
+        *ngFor="let user of users.slice(0, 3)"
+      ></app-initials>
+      <app-initials
+        [type]="'v2'"
+        [initials]="'+' + (users.length - 3)"
+        *ngIf="users.length > 3"
+      ></app-initials>
+    </div>
+  </div>
+</div>

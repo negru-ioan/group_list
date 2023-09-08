@@ -44,12 +44,16 @@
       </div>
     </div>
     <div class="right-side flex gap-1">
-      <div class="user-initials" *ngFor="let user of users.slice(0, 3)">
-        {{ user.userInitials }}
-      </div>
-      <div class="user-initials" *ngIf="users.length > 3">
-        +{{ users.length - 3 }}
-      </div>
+      <app-initials
+        [type]="'v1'"
+        [initials]="user.userInitials"
+        *ngFor="let user of users.slice(0, 3)"
+      ></app-initials>
+      <app-initials
+        [type]="'v1'"
+        [initials]="'+' + (users.length - 3)"
+        *ngIf="users.length > 3"
+      ></app-initials>
     </div>
   </div>
   <p>{{ group.warning }}</p>

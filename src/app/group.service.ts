@@ -11,7 +11,7 @@ export class GroupService {
       ...group,
       functions: group.functions.sort(
         (a, b) => Number(a.maxValue) - Number(b.maxValue)
-      )
+      ),
     };
   });
   private selected: Group = this.groups[0];
@@ -28,7 +28,7 @@ export class GroupService {
     this.groups = groups;
   }
 
-  getGroups(): Group[] {
+  get getGroups(): Group[] {
     return this.groups;
   }
 

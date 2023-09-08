@@ -1,0 +1,21 @@
+.v1 {
+  background-color: var(--color-white-smoke);
+  color: var(--color-gray-600);
+  padding: 4px 7px 6px;
+  border-radius: 50%;
+  font-size: small;
+}
+
+.v2 {
+  background-color: rgb(225, 241, 255);
+  color: var(--color-primary-light);
+  font-weight: 700;
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: medium;
+}
