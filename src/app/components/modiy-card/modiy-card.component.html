@@ -27,6 +27,7 @@
             [(ngModel)]="group.groupName"
             (ngModelChange)="modifyGroup($event, 'groupName')"
             [disabled]="false"
+            [disabled]="!inModifyPage"
           />
         </mat-form-field>
       </div>
@@ -40,6 +41,7 @@
             [(ngModel)]="group.minValue"
             (ngModelChange)="modifyGroup($event, 'minValue')"
             [disabled]="false"
+            [disabled]="!inModifyPage"
           />
         </mat-form-field>
       </div>
@@ -53,6 +55,7 @@
             [(ngModel)]="group.maxValue"
             (ngModelChange)="modifyGroup($event, 'maxValue')"
             [disabled]="false"
+            [disabled]="!inModifyPage"
           />
         </mat-form-field>
       </div>

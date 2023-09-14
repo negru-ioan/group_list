@@ -13,6 +13,7 @@ export class ModiyCardComponent {
   @Input() group!: Group;
   @Input() deleteGroup!: (id: number) => void;
   length = 0;
+  inModifyPage = window.location.href.includes('modifica');
   popupVisible = false;
   users: any[] = [];
   services: any[] = [];

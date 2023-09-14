@@ -83,20 +83,26 @@
       <div class="content">
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Filtra" value="" />
+            <input
+              matInput
+              placeholder="Filtra"
+              value=""
+              [disabled]="!inModifyPage"
+              (change)="filterUsers($event)"
+            />
           </mat-form-field>
         </form>
         <div class="users flex flex-col gap-2">
           <div
             class="row flex gap-4 items-center"
-            *ngFor="let user of selected.users; let i = index"
+            *ngFor="let user of users; let i = index"
           >
             <input
               type="checkbox"
               name=""
               [checked]="user.checked"
               [disabled]="!inModifyPage"
-              (change)="toggleUser(i)"
+              (change)="toggleUser(user.userId)"
             />
             <app-initials
               [type]="'v2'"

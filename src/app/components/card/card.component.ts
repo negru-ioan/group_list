@@ -50,6 +50,7 @@ export class CardComponent implements OnChanges {
   // }
 
   setSelected(id: number) {
+    console.log(id, 'setSelected - card');
     this.groupService.setSelected(id);
   }
 

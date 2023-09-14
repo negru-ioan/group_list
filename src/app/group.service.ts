@@ -17,13 +17,19 @@ export class GroupService {
       };
     })
   );
-  selected = signal<RetardedGroup>(this.initSelected(0));
+  selected = signal<RetardedGroup>(this.initSelected(0, 0));
 
-  initSelected(i: number) {
+  initSelected(i: number, id: number) {
+    const existingGroup = this.groups()[i] ?? {
+      groupName: 'Group',
+      id,
+      minValue: '',
+      maxValue: '',
+    };
     return {
-      ...this.groups()[i],
+      ...existingGroup,
       functions: functions.map((func) => {
-        const exFunc = this.groups()[2].functions.find(
+        const exFunc = this.groups()?.[i]?.functions?.find(
           (funct) => funct.functionCode === func.function_code
         );
         return {
@@ -35,7 +41,7 @@ export class GroupService {
         };
       }),
       users: users.map((user) => {
-        const exUser = this.groups()[i].users.find(
+        const exUser = this.groups()?.[i]?.users?.find(
           (usr) => usr.userId === user.userId
         );
         return {
@@ -52,27 +58,33 @@ export class GroupService {
   }
 
   constructor() {
-    this.initSelected(0);
+    this.initSelected(0, 0);
   }
 
   setSelected(id: number): void {
     const index = this.groups().findIndex((item) => item.id === id);
-    this.selected.set(this.initSelected(index));
-    console.log(this.selected(), 345678);
+    if (index !== -1) {
+      this.selected.set(this.initSelected(index, 0));
+    } else {
+      this.selected.set(this.initSelected(-1, 0));
+    }
   }
 
-  setSelectedInGroups() {
+  setSelectedInGroups(id: number): void {
     let selected = { ...this.selected() };
-    const index = this.groups().findIndex((val) => val.id === selected.id);
+    const index = this.groups().findIndex((val) => val.id === id);
+
     this.groups.mutate((val) => {
       const functions = selected.functions.filter((func) => func.checked);
       const users = selected.users.filter((user) => user.checked);
-      val[index] = {
+      val[index || this.groups().length] = {
         ...selected,
         functions,
         users,
       };
     });
+    console.log(this.groups(), 'groups => setSelectedInGroups - serv');
+    console.log(this.selected(), 'selected => setSelectedInGroups - serv');
   }
 
   deleteGroup(id: number): void {

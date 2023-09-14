@@ -18,13 +18,20 @@ export class SecondPageComponent implements OnInit {
   groups: Group[] = [];
   selected = this.groupService.selected();
   inModifyPage = window.location.href.includes('modifica');
+  users = [...this.selected.users];
   constructor(private groupService: GroupService) {}
 
   ngOnInit(): void {
+    const id = window.location.href.slice(22).match(/\d+/)?.[0] || 0;
     this.groups = this.groupService.groups();
-    // log(this.selected.users, users, this.groupService.selected().users, 13425);
-    log(this.selected);
+    log(
+      id,
+      this.selected.id,
+      this.groupService.selected().id,
+      'ngOnInit second'
+    );
   }
+
   changeFuncVal(e: Event, funCode: string, key: 'minValue' | 'maxValue') {
     const val = (<HTMLInputElement>e.target).value;
     if (isNaN(Number(val))) {
@@ -57,11 +64,56 @@ export class SecondPageComponent implements OnInit {
     }
   }
 
-  save() {
-    // this.groupService.setSelectedInGroups(this.selected);
+  filterUsers(e: Event) {
+    const val = (<HTMLInputElement>e.target).value;
+    if (val) {
+      this.users = this.selected.users.filter((user) =>
+        user.fullName.match(new RegExp(val, 'gi'))
+      );
+    } else {
+      this.users = [...this.selected.users];
+    }
   }
 
-  toggleUser(i: number) {
-    this.selected.users[i].checked = !this.selected.users[i].checked;
+  // toggleUser(id: string) {
+  //   const user = this.selected.users.find((u) => u.userId === id);
+  //   const usr = this.users.find((u) => u.userId === id);
+  //   const userFromUsers = users.find((u) => u.userId === id);
+  //   if (user) {
+  //     user.checked = !user.checked;
+  //   } else {
+  //     const newUser = {
+  //       fullName: userFromUsers?.fullName || '',
+  //       userId: userFromUsers?.userId || '',
+  //       userInitials: userFromUsers?.fullName?.match(/\b\w/g)?.join('') || '',
+  //       checked: true,
+  //     };
+  //     this.selected.users.push(newUser);
+  //     this.users.push(newUser);
+  //   }
+  //   if (usr) usr.checked = !usr.checked;
+
+  //   log(this.selected.users);
+  // }
+  toggleUser(id: string) {
+    const user = this.selected.users.find((u) => u.userId === id);
+    const userFromUsers = users.find((u) => u.userId === id);
+
+    if (user) {
+      user.checked = !user.checked;
+    } else if (userFromUsers) {
+      const newUser = {
+        fullName: userFromUsers.fullName || '',
+        userId: userFromUsers.userId || '',
+        userInitials:
+          (userFromUsers.fullName || '').match(/\b\w/g)?.join('') || '',
+        checked: true,
+      };
+
+      this.selected.users.push(newUser);
+      this.users.push(newUser);
+    }
+
+    log(this.selected.users);
   }
 }
