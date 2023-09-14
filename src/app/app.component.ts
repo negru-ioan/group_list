@@ -49,4 +49,8 @@ export class AppComponent {
 
     this.groups = this.groupService.groups();
   }
+
+  saveGroup() {
+    this.groupService.setSelectedInGroups();
+  }
 }

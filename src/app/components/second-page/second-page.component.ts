@@ -58,7 +58,7 @@ export class SecondPageComponent implements OnInit {
   }
 
   save() {
-    this.groupService.setSelectedInGroups(this.selected);
+    // this.groupService.setSelectedInGroups(this.selected);
   }
 
   toggleUser(i: number) {

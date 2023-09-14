@@ -10,7 +10,11 @@
       <button *ngIf="currentLocation !== '/'" mat-raised-button>
         <a routerLink="/" style="color: var(--color-primary)">Annulla</a>
       </button>
-      <button mat-raised-button style="background-color: var(--color-primary)">
+      <button
+        mat-raised-button
+        style="background-color: var(--color-primary)"
+        (click)="saveGroup()"
+      >
         <a
           routerLink="{{ paths[currentLocation]?.goTo }}"
           style="color: white"
