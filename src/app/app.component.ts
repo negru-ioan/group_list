@@ -7,6 +7,7 @@ type Paths = {
   [key: string]: {
     header: string;
     footer: string;
+    goTo: string;
   };
 };
 
@@ -24,14 +25,17 @@ export class AppComponent {
     '/': {
       header: 'Acasa',
       footer: 'Nuovo gruppo',
+      goTo: '/nuovo',
     },
     '/modifica': {
       header: 'Modificare il gruppo',
       footer: 'Salva',
+      goTo: '/',
     },
     '/nuovo': {
       header: 'Creare un nuovo gruppo',
-      footer: 'Salva',
+      footer: 'Modifica',
+      goTo: '/modifica',
     },
   };
 

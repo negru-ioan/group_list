@@ -15,44 +15,15 @@ const log = (...args: any[]) => {
   styleUrls: ['./second-page.component.css'],
 })
 export class SecondPageComponent implements OnInit {
-  // users = [...users];
   groups: Group[] = [];
-  selected: RetardedGroup = {
-    // group (global)
-    ...this.groupService.selected,
-    functions: functions.map((func) => {
-      const exFunc = this.groupService.selected.functions.find(
-        (funct) => funct.functionCode === func.function_code
-      );
-      return {
-        title: func.function_name,
-        functionCode: func.function_code,
-        minValue: exFunc?.minValue || '',
-        maxValue: exFunc?.maxValue || '',
-        checked: !!exFunc,
-      };
-    }),
-    users: users.map((user) => {
-      const exUser = this.groupService.selected.users.find(
-        (usr) => usr.userId === user.userId
-      );
-      return {
-        userId: user?.userId || '',
-        userInitials:
-          exUser?.userInitials ||
-          user?.fullName?.match(/\b\w/g)?.join('') ||
-          '',
-        fullName: user.fullName,
-        checked: !!exUser,
-      };
-    }),
-  };
+  selected = this.groupService.selected();
   inModifyPage = window.location.href.includes('modifica');
   constructor(private groupService: GroupService) {}
 
   ngOnInit(): void {
     this.groups = this.groupService.groups();
-    log(this.selected.users, users, this.groupService.selected.users, 13425);
+    // log(this.selected.users, users, this.groupService.selected().users, 13425);
+    log(this.selected);
   }
   changeFuncVal(e: Event, funCode: string, key: 'minValue' | 'maxValue') {
     const val = (<HTMLInputElement>e.target).value;
@@ -78,19 +49,19 @@ export class SecondPageComponent implements OnInit {
     );
     exFunc.checked = !exFunc.checked;
     if (exFunc.checked) {
-      exFunc.minValue = '1';
-      exFunc.maxValue = '9999';
+      exFunc.minValue = this.selected.minValue;
+      exFunc.maxValue = this.selected.maxValue;
     } else {
       exFunc.minValue = '';
       exFunc.maxValue = '';
     }
   }
 
-  toggleUser(i: number) {
-    this.selected.users[i].checked = !this.selected.users[i].checked;
-  }
-
   save() {
     this.groupService.setSelectedInGroups(this.selected);
+  }
+
+  toggleUser(i: number) {
+    this.selected.users[i].checked = !this.selected.users[i].checked;
   }
 }

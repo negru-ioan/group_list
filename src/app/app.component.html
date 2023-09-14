@@ -11,9 +11,11 @@
         <a routerLink="/" style="color: var(--color-primary)">Annulla</a>
       </button>
       <button mat-raised-button style="background-color: var(--color-primary)">
-        <a routerLink="nuovo" style="color: white">{{
-          paths[currentLocation]?.footer
-        }}</a>
+        <a
+          routerLink="{{ paths[currentLocation]?.goTo }}"
+          style="color: white"
+          >{{ paths[currentLocation]?.footer }}</a
+        >
       </button>
     </footer>
   </div>

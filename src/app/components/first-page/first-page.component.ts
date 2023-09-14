@@ -12,7 +12,7 @@ export class FirstPageComponent implements OnInit {
 
   constructor(private groupService: GroupService) {}
 
-  setSelected = (group: Group) => this.groupService.setSelected(group);
+  setSelected = (group: Group) => this.groupService.setSelected(group.id);
 
   ngOnInit(): void {
     this.groups = this.groupService.groups();

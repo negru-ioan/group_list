@@ -75,38 +75,38 @@
           </div>
         </div>
       </div>
-      <div class="right">
-        <h1>Seleziona utenti da aggiungere al gruppo</h1>
-        <p>Sono disponibili solo gli utenti dispositivi</p>
-        <!-- Selectați utilizatorii de adăugat la grup. Numai utilizatorii de dispozitive sunt disponibili -->
-        <div class="content">
-          <form class="example-form">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Filtra" value="" />
-            </mat-form-field>
-          </form>
-          <div class="users flex flex-col gap-2">
-            <div
-              class="row flex gap-4 items-center"
-              *ngFor="let user of selected.users; let i = index"
-            >
-              <input
-                type="checkbox"
-                name=""
-                [checked]="user.checked"
-                [disabled]="!inModifyPage"
-                (change)="toggleUser(i)"
-              />
-              <app-initials
-                [type]="'v2'"
-                [initials]="user.fullName"
-              ></app-initials>
-              <!-- <div class="user-initials">
-              {{ user.userInitials }}
-            </div> -->
-              <div class="name">
-                {{ user.fullName }}
-              </div>
+    </div>
+    <div class="right">
+      <h1>Seleziona utenti da aggiungere al gruppo</h1>
+      <p>Sono disponibili solo gli utenti dispositivi</p>
+      <!-- Selectați utilizatorii de adăugat la grup. Numai utilizatorii de dispozitive sunt disponibili -->
+      <div class="content">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Filtra" value="" />
+          </mat-form-field>
+        </form>
+        <div class="users flex flex-col gap-2">
+          <div
+            class="row flex gap-4 items-center"
+            *ngFor="let user of selected.users; let i = index"
+          >
+            <input
+              type="checkbox"
+              name=""
+              [checked]="user.checked"
+              [disabled]="!inModifyPage"
+              (change)="toggleUser(i)"
+            />
+            <app-initials
+              [type]="'v2'"
+              [initials]="user.fullName"
+            ></app-initials>
+            <!-- <div class="user-initials">
+            {{ user.userInitials }}
+          </div> -->
+            <div class="name">
+              {{ user.fullName }}
             </div>
           </div>
         </div>

@@ -49,9 +49,8 @@ export class CardComponent implements OnChanges {
   //   this.groupService.deleteGroup(id)
   // }
 
-  setSelected(group: Group) {
-    this.groupService.setSelected(group);
-    console.log(this.groupService.selected);
+  setSelected(id: number) {
+    this.groupService.setSelected(id);
   }
 
   showPopup() {
