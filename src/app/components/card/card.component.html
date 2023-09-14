@@ -24,7 +24,11 @@
           class="popup shadow-lg"
         >
           <p class="">Altro</p>
-          <div class="row" routerLink="modifica" (click)="setSelected(group)">
+          <div
+            class="row"
+            routerLink="/modifica/{{ group.id }}"
+            (click)="setSelected(group)"
+          >
             <img
               src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
               alt="pen"

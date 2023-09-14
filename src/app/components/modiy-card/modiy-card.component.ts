@@ -2,6 +2,7 @@ import { Component, SimpleChanges, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { GroupService } from 'src/app/group.service';
 import { Group } from 'types';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-modiy-card',
@@ -16,6 +17,7 @@ export class ModiyCardComponent {
   users: any[] = [];
   services: any[] = [];
   currentLocation = '';
+  pageId = 0;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['group'] && changes['group'].currentValue) {
@@ -36,23 +38,24 @@ export class ModiyCardComponent {
     }
   }
 
-  constructor(private router: Router, private groupService: GroupService) {
+  constructor(
+    private router: Router,
+    private groupService: GroupService,
+    private route: ActivatedRoute
+  ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentLocation = event.url;
       }
     });
+    this.group = this.groupService.selected;
+    const id = this.route.snapshot.paramMap.get('id');
+    this.pageId = id ? Number(id) : 420;
   }
-
-  // constructor(private groupService: GroupService) {}
-
-  // deleteGroup(id: number){
-  //   this.groupService.deleteGroup(id)
-  // }
 
   setSelected(group: Group) {
     this.groupService.setSelected(group);
-    console.log(this.groupService.getSelected());
+    console.log(this.groupService.selected);
   }
 
   showPopup() {
@@ -61,5 +64,13 @@ export class ModiyCardComponent {
 
   hidePopup() {
     this.popupVisible = false;
+  }
+
+  modifyGroup(
+    newValue: string,
+    inputFor: 'groupName' | 'minValue' | 'maxValue'
+  ) {
+    this.group[inputFor] = newValue;
+    this.groupService.modifyGroup(this.pageId, this.group);
   }
 }

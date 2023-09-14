@@ -6,7 +6,7 @@ import { NewComponent } from './components/new/new.component';
 
 const routes: Routes = [
   { path: '', component: FirstPageComponent },
-  { path: 'modifica', component: SecondPageComponent },
+  { path: 'modifica/:id', component: SecondPageComponent },
   { path: 'nuovo', component: NewComponent },
 ];
 

@@ -15,62 +15,6 @@ export const groupList = [
         minValue: '1',
         maxValue: '500',
       },
-      {
-        title: 'F24',
-        functionCode: 'F24-PAYMENT',
-        minValue: '2',
-        maxValue: '150',
-      },
-      {
-        title: 'Bonifico SEPA',
-        functionCode: 'SEPA-TRANSFER',
-        minValue: '2',
-        maxValue: '150',
-      },
-    ],
-    groupName: 'Alcolisti anonimi',
-    id: 69,
-    minValue: '1',
-    maxValue: '500',
-    users: [
-      {
-        userId: '09452W4295001',
-        userInitials: 'EB',
-        fullName: 'Elisa Blu',
-      },
-      {
-        userId: '09452W4295001',
-        userInitials: 'EM',
-        fullName: 'Eduardo Muie',
-      },
-      {
-        userId: '09452W4208001',
-        userInitials: 'DA',
-        fullName: 'Donatelo Albo',
-      },
-      {
-        userId: '23152W4295001',
-        userInitials: 'MG',
-        fullName: 'Michelangelo Gera',
-      },
-    ],
-    warning: '',
-  },
-
-  {
-    functions: [
-      {
-        title: 'MAV',
-        functionCode: 'MAV-SLIP',
-        minValue: '1',
-        maxValue: '500',
-      },
-      {
-        title: 'RAV',
-        functionCode: 'RAV-SLIP',
-        minValue: '1',
-        maxValue: '500',
-      },
     ],
     groupName: 'Group 1',
     id: 22,
@@ -131,23 +75,6 @@ export const groupList = [
     minValue: '1',
     maxValue: '150',
     users: [
-      {
-        userId: '09452W4295001',
-        userInitials: 'EB',
-        fullName: 'Elisa Blu',
-      },
-
-      {
-        userId: '09452W4295002',
-        userInitials: 'SN',
-        fullName: 'Sara Neri',
-      },
-
-      {
-        userId: '09452W4295003',
-        userInitials: 'CD',
-        fullName: 'Clone Dispo',
-      },
       {
         userId: '09452W4295001',
         userInitials: 'EB',
@@ -274,7 +201,7 @@ export const functions = [
     function_name: 'XML SEPA',
   },
 ];
-export const users: user[] = [
+export const users = [
   {
     userId: '09452W4295001',
     fullName: 'Elisa Blu',

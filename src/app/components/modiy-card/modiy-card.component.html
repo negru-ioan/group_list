@@ -17,14 +17,15 @@
     class="flex w-full flex-end justify-between"
     style="align-items: flex-end; padding: 20px 0 0"
   >
-    <form class="bottom flex gap-4">
+    <div class="bottom flex gap-4">
       <div class="col">
         <p>Nuome gruppo</p>
         <mat-form-field class="example-full-width">
           <input
             matInput
             placeholder="Nuome"
-            [value]="'Gruppo'"
+            [(ngModel)]="group.groupName"
+            (ngModelChange)="modifyGroup($event, 'groupName')"
             [disabled]="false"
           />
         </mat-form-field>
@@ -36,7 +37,8 @@
           <input
             matInput
             placeholder="EUR"
-            [value]="group.minValue | number : '1.2-2'"
+            [(ngModel)]="group.minValue"
+            (ngModelChange)="modifyGroup($event, 'minValue')"
             [disabled]="false"
           />
         </mat-form-field>
@@ -48,12 +50,13 @@
           <input
             matInput
             placeholder="EUR"
-            [value]="group.maxValue | number : '1.2-2'"
+            [(ngModel)]="group.maxValue"
+            (ngModelChange)="modifyGroup($event, 'maxValue')"
             [disabled]="false"
           />
         </mat-form-field>
       </div>
-    </form>
+    </div>
     <div class="users">
       <app-initials
         [type]="'v2'"

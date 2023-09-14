@@ -7,81 +7,106 @@
       <div class="content">
         <div class="col">
           <p>Servizo</p>
-          <div class="flex gap-1" *ngFor="let function of functions">
+          <div
+            class="flex gap-1"
+            *ngFor="let function of selected.functions; let i = index"
+          >
             <mat-slide-toggle
               color="primary"
-              [disabled]="inModifyPage"
-              [checked]="!!function.gorupFunct"
+              [disabled]="!inModifyPage"
+              [checked]="!!function.checked"
+              (change)="toggleFunc(function.functionCode)"
             ></mat-slide-toggle>
             <p class="title" style="text-overflow: ellipsis">
-              {{ function.function_name }}
+              {{ function.title }}
             </p>
           </div>
         </div>
         <div class="col">
           <p>Soglia minima</p>
-          <div
-            class="data flex gap-1 justify-between"
-            *ngFor="let function of functions"
-          >
-            <p
-              class="title"
-              [style]="{
-                visibility: function.gorupFunct?.minValue ? 'visible' : 'hidden'
-              }"
-            >
-              {{ (function.gorupFunct?.minValue | number : "1.2-2") || "N/A" }}
-            </p>
-            <p class="eur" *ngIf="function.gorupFunct">EUR</p>
+          <div *ngFor="let function of selected.functions">
+            <div class="data flex gap-1 justify-between" *ngIf="!inModifyPage">
+              <p
+                class="title"
+                [style]="{
+                  visibility: function?.minValue ? 'visible' : 'hidden'
+                }"
+              >
+                {{ (function?.minValue | number : "1.2-2") || "N/A" }}
+              </p>
+              <p class="eur" *ngIf="function.checked">EUR</p>
+            </div>
+
+            <input
+              *ngIf="inModifyPage"
+              matInput
+              placeholder="EUR"
+              [value]="function.minValue"
+              (change)="
+                changeFuncVal($event, function.functionCode, 'minValue')
+              "
+            />
           </div>
         </div>
         <div class="col">
-          <p>Soglia massima</p>
-          <div
-            class="data flex gap-1 justify-between"
-            *ngFor="let function of functions"
-          >
-            <p
-              class="title"
-              [style]="{
-                visibility: function.gorupFunct?.maxValue ? 'visible' : 'hidden'
-              }"
-            >
-              {{ (function.gorupFunct?.maxValue | number : "1.2-2") || "N/A" }}
-            </p>
-            <p class="eur" *ngIf="function.gorupFunct">EUR</p>
+          <p>Soglia minima</p>
+          <div *ngFor="let function of selected.functions">
+            <div class="data flex gap-1 justify-between" *ngIf="!inModifyPage">
+              <p
+                class="title"
+                [style]="{
+                  visibility: function?.maxValue ? 'visible' : 'hidden'
+                }"
+              >
+                {{ (function?.maxValue | number : "1.2-2") || "N/A" }}
+              </p>
+              <p class="eur" *ngIf="function.checked">EUR</p>
+            </div>
+
+            <input
+              *ngIf="inModifyPage"
+              matInput
+              placeholder="EUR"
+              [value]="function?.maxValue"
+              (change)="
+                changeFuncVal($event, function.functionCode, 'maxValue')
+              "
+            />
           </div>
         </div>
       </div>
-    </div>
-    <div class="right">
-      <h1>Seleziona utenti da aggiungere al gruppo</h1>
-      <p>Sono disponibili solo gli utenti dispositivi</p>
-      <!-- Selectați utilizatorii de adăugat la grup. Numai utilizatorii de dispozitive sunt disponibili -->
-      <div class="content">
-        <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Filtra" value="" />
-          </mat-form-field>
-        </form>
-        <div class="users flex flex-col gap-2">
-          <div class="row flex gap-4 items-center" *ngFor="let user of users">
-            <input
-              type="checkbox"
-              name=""
-              [checked]="user?.checked"
-              [disabled]="inModifyPage"
-              id=""
-            />
-            <app-initials
-              [type]="'v2'"
-              [initials]="user.fullName"
-            ></app-initials>
-            <!-- <div class="user-initials">
+      <div class="right">
+        <h1>Seleziona utenti da aggiungere al gruppo</h1>
+        <p>Sono disponibili solo gli utenti dispositivi</p>
+        <!-- Selectați utilizatorii de adăugat la grup. Numai utilizatorii de dispozitive sunt disponibili -->
+        <div class="content">
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Filtra" value="" />
+            </mat-form-field>
+          </form>
+          <div class="users flex flex-col gap-2">
+            <div
+              class="row flex gap-4 items-center"
+              *ngFor="let user of selected.users; let i = index"
+            >
+              <input
+                type="checkbox"
+                name=""
+                [checked]="user.checked"
+                [disabled]="!inModifyPage"
+                (change)="toggleUser(i)"
+              />
+              <app-initials
+                [type]="'v2'"
+                [initials]="user.fullName"
+              ></app-initials>
+              <!-- <div class="user-initials">
               {{ user.userInitials }}
             </div> -->
-            <div class="name">
-              {{ user.fullName }}
+              <div class="name">
+                {{ user.fullName }}
+              </div>
             </div>
           </div>
         </div>

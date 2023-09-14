@@ -38,10 +38,11 @@ export class AppComponent {
   constructor(private router: Router, private groupService: GroupService) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.currentLocation = event.url;
+        this.currentLocation = event.url.replace(/\/\d+$/, '');
+        console.log(this.currentLocation);
       }
     });
 
-    this.groups = this.groupService.getGroups;
+    this.groups = this.groupService.groups();
   }
 }

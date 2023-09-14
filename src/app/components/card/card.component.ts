@@ -15,7 +15,7 @@ export class CardComponent implements OnChanges {
   popupVisible = false;
   users: any[] = [];
   services: any[] = [];
-  currentLocation = ""
+  currentLocation = '';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['group'] && changes['group'].currentValue) {
@@ -49,10 +49,10 @@ export class CardComponent implements OnChanges {
   //   this.groupService.deleteGroup(id)
   // }
 
-  setSelected(group: Group){
+  setSelected(group: Group) {
     this.groupService.setSelected(group);
-    console.log(this.groupService.getSelected());
-  };
+    console.log(this.groupService.selected);
+  }
 
   showPopup() {
     this.popupVisible = true;

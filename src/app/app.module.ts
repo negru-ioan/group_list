@@ -14,6 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { ModiyCardComponent } from './components/modiy-card/modiy-card.component';
 import { InitialsComponent } from './components/initials/initials.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { InitialsComponent } from './components/initials/initials.component';
     MatButtonModule,
     MatSlideToggleModule,
     MatInputModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
