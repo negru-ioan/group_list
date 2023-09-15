@@ -7,7 +7,6 @@ type Paths = {
   [key: string]: {
     header: string;
     footer: string;
-    goTo: string;
   };
 };
 
@@ -27,31 +26,6 @@ export class AppComponent {
     window.location.pathname.length > 1
       ? window.location.pathname.replace(/\/\d+$/, '')
       : '/';
-  paths: Paths = {
-    '/': {
-      // header: 'Acasa',
-      // footer: 'Nuovo gruppo',
-      // goTo: '/modifica/' + this.id,
-      header: 'Creare un nuovo gruppo',
-      footer: 'Nuovo gruppo',
-      goTo: '/modifica/' + this.randomId,
-    },
-    '/modifica': {
-      header: 'Modificare il gruppo',
-      footer: 'Salva',
-      goTo: '/',
-    },
-    // '/nuovo': {
-    //   header: 'Creare un nuovo gruppo',
-    //   footer: 'Modifica',
-    //   goTo: '/modifica/' + this.randomId,
-    // },
-    '/preview': {
-      header: "Visualizzare l'anteprima del gruppo",
-      footer: 'Modifica',
-      goTo: '/modifica/' + this.id,
-    },
-  };
 
   constructor(private router: Router, private groupService: GroupService) {
     this.router.events.subscribe((event) => {
@@ -66,30 +40,40 @@ export class AppComponent {
     });
 
     this.groups = this.groupService.groups();
-    this.randomId = this.randNum();
   }
+
+  paths: Paths = {
+    '/': {
+      header: 'Creare un nuovo gruppo',
+      footer: 'Nuovo gruppo',
+    },
+    '/modifica': {
+      header: 'Modificare il gruppo',
+      footer: 'Salva',
+    },
+    '/preview': {
+      header: "Visualizzare l'anteprima del gruppo",
+      footer: 'Modifica',
+    },
+  };
 
   saveGroup() {
+    this.randomId = this.randNum();
     const id = Number(this.id);
-    if (id && this.currentLocation === '/modifica') {
+    const location = this.currentLocation;
+    let goTo = '/';
+    if (id && location === '/modifica') {
       this.groupService.setSelectedInGroups(id);
+    } else if (location === '/') {
+      this.groupService.selected.set(
+        this.groupService.initSelected(-1, this.randomId) // init new selected
+      );
+      goTo = '/modifica/' + this.randomId;
+    } else {
+      this.groupService.setSelected(id);
+      goTo = '/modifica/' + id;
     }
-    if (this.currentLocation === '/nuovo') {
-      // this.groupService.setSelectedInGroups(-1);
 
-      // this.groupService.selected.set(
-      //   this.groupService.initSelected(-1, this.randomId)
-      // );
-      this.groupService.setSelected(this.randomId);
-    }
-    console.log(
-      this.id,
-      id,
-      this.groupService.selected(),
-      'newSelected from app'
-    );
-    console.log(this.randomId, this.randomId, 'this.randomId');
+    this.router.navigate([goTo]);
   }
-
-  // this.groupService.selected.set(this.groupService.initSelected(Number(id)));
 }

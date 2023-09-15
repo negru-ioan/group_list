@@ -1,7 +1,7 @@
 <div
   class="card shadow-lg"
   [style.border]="group.warning ? '2px solid var(--color-accent-light)' : null"
-  routerLink="/preview/{{ group.id }}"
+  (click)="goToPreview()"
 >
   <div class="upp-row">
     <div class="left-side" style="display: flex; gap: 10px">

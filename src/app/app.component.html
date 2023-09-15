@@ -12,14 +12,10 @@
       </button>
       <button
         mat-raised-button
-        style="background-color: var(--color-primary)"
+        style="background-color: var(--color-primary); color: white"
         (click)="saveGroup()"
       >
-        <a
-          routerLink="{{ paths[currentLocation]?.goTo }}"
-          style="color: white"
-          >{{ paths[currentLocation]?.footer }}</a
-        >
+        {{ paths[currentLocation]?.footer }}
       </button>
     </footer>
   </div>

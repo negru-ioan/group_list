@@ -43,11 +43,12 @@ export class CardComponent implements OnChanges {
     });
   }
 
-  // constructor(private groupService: GroupService) {}
+  goToPreview() {
+    this.groupService.setSelected(this.group.id);
+    console.log(this.groupService.selected());
 
-  // deleteGroup(id: number){
-  //   this.groupService.deleteGroup(id)
-  // }
+    this.router.navigate(['/preview/' + this.group.id]);
+  }
 
   setSelected(id: number) {
     console.log(id, 'setSelected - card');

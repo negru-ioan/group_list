@@ -1,5 +1,4 @@
-import { group } from '@angular/animations';
-import { Injectable, signal, Signal, computed } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { functions, groupList, users } from 'data/groupList';
 import { Group, RetardedGroup } from 'types';
 
@@ -17,14 +16,14 @@ export class GroupService {
       };
     })
   );
-  selected = signal<RetardedGroup>(this.initSelected(0, 0));
+  selected = signal<RetardedGroup>(this.initSelected(-1, 99));
 
   initSelected(i: number, id: number) {
     const existingGroup = this.groups()[i] ?? {
       groupName: 'Group',
       id,
-      minValue: '',
-      maxValue: '',
+      minValue: '0',
+      maxValue: '0',
     };
     return {
       ...existingGroup,
@@ -72,19 +71,17 @@ export class GroupService {
 
   setSelectedInGroups(id: number): void {
     let selected = { ...this.selected() };
-    const index = this.groups().findIndex((val) => val.id === id);
-
+    let index = this.groups().findIndex((val) => val.id === id);
+    index = index < 0 ? this.groups().length : index;
     this.groups.mutate((val) => {
       const functions = selected.functions.filter((func) => func.checked);
       const users = selected.users.filter((user) => user.checked);
-      val[index || this.groups().length] = {
+      val[index] = {
         ...selected,
         functions,
         users,
       };
     });
-    console.log(this.groups(), 'groups => setSelectedInGroups - serv');
-    console.log(this.selected(), 'selected => setSelectedInGroups - serv');
   }
 
   deleteGroup(id: number): void {

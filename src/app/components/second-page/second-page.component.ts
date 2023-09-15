@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupService } from 'src/app/group.service';
-import { Group, RetardedGroup } from 'types';
-import { functions, users } from 'data/groupList';
-
-const log = (...args: any[]) => {
-  let res: any = [];
-  args.forEach((arg) => res.push(arg, '\n'));
-  console.log(...res);
-};
+import { Group } from 'types';
+import { users } from 'data/groupList';
 
 @Component({
   selector: 'app-second-page',
@@ -22,14 +16,7 @@ export class SecondPageComponent implements OnInit {
   constructor(private groupService: GroupService) {}
 
   ngOnInit(): void {
-    const id = window.location.href.slice(22).match(/\d+/)?.[0] || 0;
     this.groups = this.groupService.groups();
-    log(
-      id,
-      this.selected.id,
-      this.groupService.selected().id,
-      'ngOnInit second'
-    );
   }
 
   changeFuncVal(e: Event, funCode: string, key: 'minValue' | 'maxValue') {
@@ -47,7 +34,6 @@ export class SecondPageComponent implements OnInit {
       existingFunc.checked =
         !!val && !!(existingFunc.minValue && existingFunc.maxValue);
     }
-    log(this.selected.functions);
   }
 
   toggleFunc(funCode: string) {
@@ -75,26 +61,6 @@ export class SecondPageComponent implements OnInit {
     }
   }
 
-  // toggleUser(id: string) {
-  //   const user = this.selected.users.find((u) => u.userId === id);
-  //   const usr = this.users.find((u) => u.userId === id);
-  //   const userFromUsers = users.find((u) => u.userId === id);
-  //   if (user) {
-  //     user.checked = !user.checked;
-  //   } else {
-  //     const newUser = {
-  //       fullName: userFromUsers?.fullName || '',
-  //       userId: userFromUsers?.userId || '',
-  //       userInitials: userFromUsers?.fullName?.match(/\b\w/g)?.join('') || '',
-  //       checked: true,
-  //     };
-  //     this.selected.users.push(newUser);
-  //     this.users.push(newUser);
-  //   }
-  //   if (usr) usr.checked = !usr.checked;
-
-  //   log(this.selected.users);
-  // }
   toggleUser(id: string) {
     const user = this.selected.users.find((u) => u.userId === id);
     const userFromUsers = users.find((u) => u.userId === id);
@@ -113,7 +79,5 @@ export class SecondPageComponent implements OnInit {
       this.selected.users.push(newUser);
       this.users.push(newUser);
     }
-
-    log(this.selected.users);
   }
 }

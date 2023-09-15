@@ -39,9 +39,4 @@ import { FormsModule } from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent],
 })
-
-// const routes: Routes = [
-//   { path: 'first-component', component:  },
-//   { path: 'second-component', component: SecondComponent },
-// ];
 export class AppModule {}
